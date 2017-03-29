@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>模拟即时聊天</title>
+<style type="text/css">
+	*{margin: 0;padding: 0}
+	#iscreen{margin: 20px auto;margin-top:30px;border: 1px solid #000;width:350px;height:350px;}
+	#iinput{margin-left:37%;margin-top:10px;border: 1px solid #f00;width:200px;height:60px;clear:both;font-size: 18px}
+	/* 
+	  	li:nth-of-type(2n)
+	  	all第2n个类型为li被设置，不包含其他写在ul里面的标签
+
+		li:nth-child(2n)
+		li父元素所有的第2n个child被设置，包括写在ul里的其他非li标签
+	*/
+	li:nth-of-type(2n){list-style:none;font-size: 16px;background-color:#696;font-weight: bold;float: right;clear: both;padding:8px 15px;border-radius: 8px}
+	li:nth-child(2n+1){list-style:none;font-size: 16px;background-color:#f00;font-weight: bold;float: left;clear: both;padding:8px 15px ;border-radius: 8px}
+	form #isend{font-size: 20px}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var 
+			oSend=document.getElementById("isend");
+			oList=document.getElementById("list")
+			oChat = document.chat,
+				oTextarea = oChat.content;
+		//给发送按钮添加点击事件
+		oSend.onclick=function(){
+			var oInput=document.getElementById("iinput"),
+				oLi;
+			if (oInput.value !==''){
+				//获得文本输入框的值,添加给ul作为子元素li
+				var
+					oLi = document.createElement('li');
+					oLi.innerHTML = oTextarea.value;
+					oList.appendChild(oLi);
+
+			}
+			oInput.value =''
+		}
+	}
+</script>
+</head>
+<body>
+<div id="iscreen">
+	<ul id="list">
+	<!--
+		<li id="a1">在吗？</li>
+		<li id="a2">恩</li>
+		<li id="a3">借我点钱</li>
+		<li id="a4">你说什么？</li>
+		<li id="a5">借我点钱··</li>
+		<li id="a6">上一句</li>
+		<li id="a7">在吗··</li>
+		<li id="a8">我现在正忙，稍后再和您练习</li>
+	-->
+	</ul>
+</div>
+<form action="javascript:;" name="chat">
+<textarea type="text" id="iinput" name="content"></textarea> 
+<button id="isend">发送</button>
+</form>
+
+</body>
+</html>
